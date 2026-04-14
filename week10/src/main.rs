@@ -2,7 +2,6 @@
 
 fn main() {
     println!("Week 10: Mastering ownership and borrowing");
-    println!("All problems fixed!\n");
 
     problem_1();
     problem_2();
@@ -17,13 +16,12 @@ fn main() {
 // PROBLEM 1
 // ============================================================================
 fn problem_1() {
-    println!("Problem 1: Value used after move");
     let s1 = String::from("hello");
     let len = calculate_length(&s1);
-    println!("  The length of '{}' is {}.", s1, len);
+    println!("The length of '{}' is {}.", s1, len);
 }
 
-fn calculate_length(s: &String) -> usize {
+fn calculate_length(s: &str) -> usize {
     s.len()
 }
 
@@ -31,24 +29,22 @@ fn calculate_length(s: &String) -> usize {
 // PROBLEM 2
 // ============================================================================
 fn problem_2() {
-    println!("Problem 2: Mutable and immutable borrow conflict");
     let mut s = String::from("hello");
 
     let r1 = &s;
-    println!("  {}", r1);
+    println!("{}", r1);
 
     let r2 = &mut s;
-    println!("  {}", r2);
+    println!("{}", r2);
 }
 
 // ============================================================================
 // PROBLEM 3
 // ============================================================================
 fn problem_3() {
-    println!("Problem 3: Mutating through an immutable reference");
     let mut s = String::from("hello");
     add_to_string(&mut s);
-    println!("  Result: {}", s);
+    println!("{}", s);
 }
 
 fn add_to_string(s: &mut String) {
@@ -59,17 +55,16 @@ fn add_to_string(s: &mut String) {
 // PROBLEM 4
 // ============================================================================
 fn problem_4() {
-    println!("Problem 4: Multiple mutable borrows");
     let mut s = String::from("hello");
 
     {
         let r1 = &mut s;
-        println!("  {}", r1);
+        println!("{}", r1);
     }
 
     {
         let r2 = &mut s;
-        println!("  {}", r2);
+        println!("{}", r2);
     }
 }
 
@@ -77,9 +72,8 @@ fn problem_4() {
 // PROBLEM 5
 // ============================================================================
 fn problem_5() {
-    println!("Problem 5: Dangling reference");
     let r = create_string();
-    println!("  Got: {}", r);
+    println!("{}", r);
 }
 
 fn create_string() -> String {
@@ -90,7 +84,6 @@ fn create_string() -> String {
 // PROBLEM 6
 // ============================================================================
 fn problem_6() {
-    println!("Problem 6: Ownership in loops");
     let data = String::from("Rust");
 
     for i in 0..3 {
@@ -98,20 +91,18 @@ fn problem_6() {
     }
 }
 
-fn print_with_number(s: &String, n: i32) {
-    println!("  {}: {}", n, s);
+fn print_with_number(s: &str, n: i32) {
+    println!("{}: {}", n, s);
 }
 
 // ============================================================================
 // PROBLEM 7
 // ============================================================================
 fn problem_7() {
-    println!("Problem 7: Lifetime extension");
-
     let s = String::from("inner scope");
     let result = &s;
 
-    println!("  Result: {}", result);
+    println!("{}", result);
 }
 
 // ============================================================================
